@@ -7,7 +7,6 @@ A clickable mockup of a scout group's portal. Everything in it is made-up sample
 - `files.html`: shared files
 - `members.html`: leaders' vetting and training, youth members' forms
 - `payments.html`: subs and payments
-- `login.html`: sign-in screen
 - `parent.html`: what a parent sees on their phone
 
 Live site: https://gettierswhole.github.io/scout-portal-mockup/

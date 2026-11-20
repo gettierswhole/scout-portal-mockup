@@ -113,7 +113,7 @@ var okBadge = 'flex: 0 0 auto; padding: 3px 9px; border-radius: 999px; font-size
 var shortBadge = 'flex: 0 0 auto; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #F1DEC0; color: #6B3110';
 var events = data.map(function (ev) {
 var me = mine[ev.id] || 'none';
-var rows = [{ name: 'You (Steve)', st: me }].concat(leaders.map(function (n, i) { return { name: n, st: ev.st[i] }; }));
+var rows = [{ name: 'You (Bob)', st: me }].concat(leaders.map(function (n, i) { return { name: n, st: ev.st[i] }; }));
 rows = rows.map(function (r) { return { name: r.name, label: labels[r.st], pill: pills[r.st] }; });
 var confirmed = [me].concat(ev.st).filter(function (s) { return s === 'yes'; }).length;
 var short = Math.max(0, ev.needed - confirmed);

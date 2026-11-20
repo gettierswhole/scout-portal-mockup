@@ -58,4 +58,5 @@
   var Component = new Function('DCLogic', document.getElementById('dc-logic').textContent + '\nreturn Component;')(Base);
   comp = new Component({});
   render();
+  if (typeof comp.componentDidMount === 'function') comp.componentDidMount();
 })();

@@ -9,6 +9,7 @@
 body{margin:0;background:#E9E2CF}
 a{color:#7A2A1C}a:hover{color:#5A1C12}
 </style>
+<script>window.DC_LIVE_WEATHER = true;</script>
 <script src="dc-runtime.js" defer></script>
 </head>
 <body>
@@ -62,6 +63,33 @@ a{color:#7A2A1C}a:hover{color:#5A1C12}
 <a href="payments.html" style="display: inline-block; margin-top: 10px; font-size: 15px; font-weight: 600">1 overdue · view</a>
 </div>
 </div>
+
+<section aria-labelledby="wx-h" style="background: #FBF8F0; border-radius: 12px; border: 1px solid #D6CDB6; padding: 20px 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px">
+<h2 id="wx-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 22px">Weather on Lough Ree</h2>
+<span style="font-size: 14px; color: #5E564A">{{wx.status}}</span>
+</div>
+<sc-if value="{{hasWarnings}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="margin-top: 12px; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{warnings}}" as="w" hint-placeholder-count="1">
+<div style="padding: 10px 14px; border-radius: 8px; background: #F1DEC0; border: 1px solid #A8581A; color: #6B3110; font-size: 15px"><strong>{{w.level}}</strong> {{w.text}}</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{noWarnings}}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 8px; font-size: 15px; color: #3B5230">No Met Éireann weather warnings in force.</div>
+</sc-if>
+<div role="list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px">
+<sc-for list="{{wx.tiles}}" as="t" hint-placeholder-count="6">
+<div role="listitem" style="aspect-ratio: 1 / 1; box-sizing: border-box; padding: 16px; border-radius: 6px; background: #E9E2CF; border: 1px solid #BFB49A; display: flex; flex-direction: column; justify-content: space-between">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5E564A">{{t.label}}</div>
+<div style="font-family: 'IM Fell English', Georgia, serif; font-size: 40px; line-height: 1; color: #231F1A">{{t.value}}<span style="font-size: 18px; margin-left: 4px; color: #5E564A">{{t.unit}}</span></div>
+<div style="font-size: 14px; color: #433B30">{{t.sub}}</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top: 12px; font-size: 13px; color: #5E564A">Forecast for 53.53° N, 7.98° W (mid-lake) from Met Éireann open data, CC BY 4.0. Next 24 hours for highs, lows, gusts and rain. <a href="https://www.met.ie/warnings">Met Éireann warnings</a></div>
+</section>
 
 <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
 <section aria-labelledby="up-h" style="flex: 3 1 420px; min-width: 0; background: #FBF8F0; border-radius: 12px; border: 1px solid #D6CDB6; padding: 20px 24px">
@@ -133,8 +161,72 @@ a{color:#7A2A1C}a:hover{color:#5A1C12}
 </root></script>
 <script type="text/x-dc-logic" id="dc-logic">
 class Component extends DCLogic {
+constructor(props) {
+super(props);
+// Snapshot from Met Éireann, Fri 20 Nov 00:42. The published site replaces it with live data.
+this.state = {
+w: { temp: '5.9', tMin: '2.9', tMax: '8.0', wind: 17, dir: 'NE', bft: 'Gentle breeze', gust: 27, rain: '0.0', prob: 7, humidity: 88, pressure: 998, cloud: 99, updated: 'Fri 20 Nov, 00:42' },
+live: false,
+warnings: []
+};
+}
+componentDidMount() {
+if (typeof window === 'undefined' || !window.DC_LIVE_WEATHER) return;
+var self = this;
+fetch('https://openaccess.pf.api.met.ie/metno-wdb2ts/locationforecast?lat=53.53;long=-7.98')
+.then(function (r) { return r.text(); })
+.then(function (t) { self.setState({ w: self.parseMet(t), live: true }); })
+.catch(function () {});
+fetch('https://www.met.ie/Open_Data/json/warning_IRELAND.json')
+.then(function (r) { return r.json(); })
+.then(function (list) { if (Array.isArray(list)) self.setState({ warnings: list }); })
+.catch(function () {});
+}
+parseMet(xmlText) {
+var doc = new DOMParser().parseFromString(xmlText, 'application/xml');
+var times = Array.prototype.slice.call(doc.getElementsByTagName('time'));
+var H = 3600000, now = Date.now(), end = now + 24 * H;
+function g(t, tag, attr) { var e = t.getElementsByTagName(tag)[0]; return e ? parseFloat(e.getAttribute(attr)) : NaN; }
+var inst = times.filter(function (t) { return t.getAttribute('from') === t.getAttribute('to'); });
+var i24 = inst.filter(function (t) { var f = Date.parse(t.getAttribute('to')); return f > now - H && f <= end; });
+var cur = i24[0] || inst[0];
+var temps = i24.map(function (t) { return g(t, 'temperature', 'value'); });
+var gusts = i24.map(function (t) { return g(t, 'windGust', 'mps'); });
+var per = times.filter(function (t) { var f = Date.parse(t.getAttribute('from')), to = Date.parse(t.getAttribute('to')); return to - f === H && f >= now - H && to <= end; });
+var rain = 0, prob = 0;
+per.forEach(function (t) { rain += g(t, 'precipitation', 'value') || 0; prob = Math.max(prob, g(t, 'precipitation', 'probability') || 0); });
+var wd = cur.getElementsByTagName('windDirection')[0], ws = cur.getElementsByTagName('windSpeed')[0];
+var created = doc.documentElement.getAttribute('created');
+return {
+temp: g(cur, 'temperature', 'value').toFixed(1), tMin: Math.min.apply(null, temps).toFixed(1), tMax: Math.max.apply(null, temps).toFixed(1),
+wind: Math.round(parseFloat(ws.getAttribute('mps')) * 3.6), dir: wd.getAttribute('name'), bft: ws.getAttribute('name'),
+gust: Math.round(Math.max.apply(null, gusts) * 3.6), rain: rain.toFixed(1), prob: Math.round(prob),
+humidity: Math.round(g(cur, 'humidity', 'value')), pressure: Math.round(g(cur, 'pressure', 'value')), cloud: Math.round(g(cur, 'cloudiness', 'percent')),
+updated: new Date(created).toLocaleString('en-IE', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin' })
+};
+}
 renderVals() {
-return {};
+var s = this.state || {};
+var w = s.w || {};
+var warnings = (s.warnings || []).map(function (x) {
+return { level: (x.level || x.type || 'Warning') + ':', text: x.headline || x.description || x.regions || '' };
+});
+return {
+wx: {
+status: (s.live ? 'Live · updated ' : 'Snapshot · ') + w.updated,
+tiles: [
+{ label: 'Temperature', value: w.temp, unit: '°C', sub: 'Low ' + w.tMin + '° · high ' + w.tMax + '°' },
+{ label: 'Wind', value: w.wind, unit: 'km/h', sub: w.dir + ' · ' + w.bft },
+{ label: 'Gusts', value: w.gust, unit: 'km/h', sub: 'Strongest in the next 24 h' },
+{ label: 'Rain', value: w.rain, unit: 'mm', sub: 'Next 24 h · up to ' + w.prob + '% chance' },
+{ label: 'Humidity', value: w.humidity, unit: '%', sub: 'Cloud cover ' + w.cloud + '%' },
+{ label: 'Pressure', value: w.pressure, unit: 'hPa', sub: w.pressure < 1000 ? 'Low: unsettled' : 'Settled' }
+]
+},
+warnings: warnings,
+hasWarnings: warnings.length > 0,
+noWarnings: warnings.length === 0
+};
 }
 }
 </script>

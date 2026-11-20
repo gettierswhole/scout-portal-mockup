@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 360" width="1200" height="360">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#9DAA9C"/>
+<stop offset="1" stop-color="#C9CEBF"/>
+</linearGradient>
+<linearGradient id="ice" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#8FA49E"/>
+<stop offset="1" stop-color="#A9BAB3"/>
+</linearGradient>
+<g id="p">
+<circle cx="0" cy="-11" r="2.1" fill="#2A241E"/>
+<path d="M-2.6 -9 L2.6 -9 L3.4 -2 L-3.4 -2 Z" fill="currentColor"/>
+<path d="M-1.5 -2 L-2.2 3 M1.5 -2 L2.2 3" stroke="#2A241E" stroke-width="1.1" fill="none"/>
+</g>
+<g id="sk">
+<circle cx="1" cy="-11" r="2.1" fill="#2A241E"/>
+<path d="M-2 -9 L3 -9 L2.6 -2 L-3.6 -2 Z" fill="currentColor"/>
+<path d="M-1.5 -2 L-4 3 M1.5 -2 L3.4 2.6 M-3 -7 L-6 -5 M2.6 -7 L5.6 -9" stroke="#2A241E" stroke-width="1" fill="none"/>
+</g>
+<g id="hunter">
+<circle cx="0" cy="-13" r="2.4" fill="#2A241E"/>
+<path d="M-3.2 -10.5 L3.2 -10.5 L4 -2 L-4 -2 Z" fill="currentColor"/>
+<path d="M-1.8 -2 L-2.8 4 M1.8 -2 L2.4 4" stroke="#2A241E" stroke-width="1.3" fill="none"/>
+<path d="M-6 6 L5 -22" stroke="#3A2E22" stroke-width="0.9"/>
+<ellipse cx="3.6" cy="-6" rx="2.2" ry="3" fill="#5A4632"/>
+</g>
+<g id="dog">
+<ellipse cx="0" cy="-4.2" rx="5" ry="1.7" fill="#2A241E"/>
+<circle cx="5.4" cy="-5.6" r="1.5" fill="#2A241E"/>
+<path d="M6 -5.2 L8.2 -4.6 M-3.6 -3.4 L-4.4 0 M-2 -3.4 L-1.6 0 M2.6 -3.4 L2.2 0 M3.8 -3.4 L4.6 0 M-4.8 -4.6 L-7 -7" stroke="#2A241E" stroke-width="0.9" fill="none"/>
+</g>
+<g id="house">
+<rect x="-8" y="-8" width="16" height="8" fill="#6B5A45"/>
+<path d="M-10 -7.6 L0 -16 L10 -7.6 Z" fill="#F1F2EC"/>
+<path d="M-10 -7.6 L0 -16 L10 -7.6" stroke="#5A4A38" stroke-width="0.6" fill="none"/>
+<rect x="-2" y="-5" width="3" height="5" fill="#2A241E"/>
+<rect x="4" y="-6" width="2.4" height="2" fill="#C9A15A"/>
+</g>
+<g id="crow">
+<path d="M-4 0 Q-2 -2 0 0 Q2 -2 4 0" stroke="#1E1A16" stroke-width="1.2" fill="none"/>
+</g>
+<g id="perch">
+<ellipse cx="0" cy="-2" rx="2.4" ry="1.6" fill="#1E1A16"/>
+<circle cx="2" cy="-3.4" r="1" fill="#1E1A16"/>
+<path d="M-2.4 -2 L-4.4 -1" stroke="#1E1A16" stroke-width="0.9"/>
+</g>
+</defs>
+
+<rect width="1200" height="360" fill="url(#sky)"/>
+
+<!-- far peaks -->
+<path d="M0 175 L60 140 L95 152 L150 96 L185 120 L240 70 L268 92 L300 84 L350 128 L420 112 L470 136 L560 120 L640 150 L760 132 L830 92 L870 110 L905 64 L940 98 L990 84 L1040 122 L1110 110 L1200 140 L1200 230 L0 230 Z" fill="#DDE2DA"/>
+<path d="M150 96 L170 140 M240 70 L258 130 M905 64 L925 128 M990 84 L1004 140 M830 92 L846 140" stroke="#B4BEB5" stroke-width="2" fill="none"/>
+<path d="M0 205 Q300 180 600 196 Q900 210 1200 188 L1200 360 L0 360 Z" fill="#E7EAE2"/>
+
+<!-- frozen ponds -->
+<ellipse cx="700" cy="262" rx="200" ry="30" fill="url(#ice)"/>
+<ellipse cx="985" cy="228" rx="120" ry="15" fill="url(#ice)"/>
+<ellipse cx="520" cy="220" rx="88" ry="11" fill="url(#ice)"/>
+
+<!-- village -->
+<use xlink:href="#house" transform="translate(460 214) scale(0.7)"/>
+<use xlink:href="#house" transform="translate(486 210) scale(0.6)"/>
+<use xlink:href="#house" transform="translate(600 222) scale(0.8)"/>
+<use xlink:href="#house" transform="translate(628 226) scale(0.7)"/>
+<use xlink:href="#house" transform="translate(800 230) scale(0.9)"/>
+<use xlink:href="#house" transform="translate(910 212) scale(0.7)"/>
+<use xlink:href="#house" transform="translate(1050 214) scale(0.8)"/>
+<use xlink:href="#house" transform="translate(1110 206) scale(0.6)"/>
+<!-- church -->
+<rect x="852" y="196" width="26" height="14" fill="#7A6A55"/>
+<path d="M850 196 L865 186 L880 196 Z" fill="#F1F2EC"/>
+<rect x="878" y="176" width="9" height="34" fill="#6B5A45"/>
+<path d="M876 176 L882.5 156 L889 176 Z" fill="#3E3428"/>
+<!-- mill -->
+<rect x="1150" y="226" width="22" height="16" fill="#6B5A45"/>
+<path d="M1148 226 L1161 216 L1174 226 Z" fill="#F1F2EC"/>
+<circle cx="1146" cy="236" r="8" fill="none" stroke="#3E3428" stroke-width="1.6"/>
+<path d="M1138 236 L1154 236 M1146 228 L1146 244" stroke="#3E3428" stroke-width="1"/>
+
+<!-- skaters -->
+<use xlink:href="#sk" transform="translate(560 262) scale(0.75)" color="#3A332B"/>
+<use xlink:href="#sk" transform="translate(590 270) scale(0.75)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(612 258) scale(0.7)" color="#4E5E66"/>
+<use xlink:href="#sk" transform="translate(760 276) scale(0.8)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(790 266) scale(0.75)" color="#6B5A45"/>
+<use xlink:href="#sk" transform="translate(820 258) scale(0.7)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(842 274) scale(0.6)" color="#2A241E"/>
+<use xlink:href="#sk" transform="translate(940 230) scale(0.55)" color="#3A332B"/>
+<use xlink:href="#sk" transform="translate(965 226) scale(0.55)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(1010 232) scale(0.5)" color="#4E5E66"/>
+<use xlink:href="#sk" transform="translate(1040 226) scale(0.5)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(500 222) scale(0.5)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(530 220) scale(0.5)" color="#7A2A1C"/>
+<!-- the joust on the ice -->
+<use xlink:href="#p" transform="translate(680 262) scale(0.85)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(722 262) scale(0.85)" color="#4E5E66"/>
+<path d="M682 254 L716 244 M720 254 L686 244" stroke="#B5651D" stroke-width="1.8" stroke-linecap="round"/>
+<use xlink:href="#p" transform="translate(660 272) scale(0.65)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(670 274) scale(0.65)" color="#6B5A45"/>
+<use xlink:href="#p" transform="translate(740 274) scale(0.65)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(750 272) scale(0.65)" color="#7A2A1C"/>
+
+<!-- left foreground hill -->
+<path d="M0 238 Q180 214 380 256 Q470 280 560 360 L0 360 Z" fill="#F5F6F1"/>
+<path d="M0 238 Q180 214 380 256 Q470 280 560 360" stroke="#CBD1C8" stroke-width="2" fill="none"/>
+
+<!-- inn and fire -->
+<rect x="22" y="236" width="56" height="30" fill="#5E4C38"/>
+<path d="M16 237 L50 212 L84 237 Z" fill="#EEF0EA"/>
+<rect x="44" y="248" width="9" height="18" fill="#2A241E"/>
+<rect x="28" y="244" width="8" height="7" fill="#C9A15A"/>
+<path d="M78 244 L96 244 M92 244 L92 250" stroke="#2A241E" stroke-width="1"/>
+<rect x="86" y="250" width="12" height="8" fill="#7A2A1C"/>
+<path d="M116 292 Q118 278 124 284 Q126 272 132 286 Q136 280 136 292 Z" fill="#D9822B"/>
+<path d="M121 292 Q124 284 128 288 Q130 282 132 292 Z" fill="#F2C45A"/>
+<path d="M112 294 L140 294" stroke="#3A2E22" stroke-width="2"/>
+<use xlink:href="#p" transform="translate(106 296) scale(1.1)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(146 296) scale(1.1)" color="#3A332B"/>
+<use xlink:href="#p" transform="translate(128 304) scale(1.15)" color="#6B5A45"/>
+
+<!-- bare trees on the hill -->
+<g stroke="#2A241E" fill="none" stroke-linecap="round">
+<path d="M190 300 L194 120" stroke-width="4"/>
+<path d="M193 200 L160 160 M193 180 L226 140 M194 150 L176 118 M194 140 L214 106 M170 172 L150 166 M218 150 L240 146 M193 240 L170 222" stroke-width="1.6"/>
+<path d="M300 318 L305 140" stroke-width="4.5"/>
+<path d="M304 220 L268 182 M304 196 L340 160 M305 166 L284 130 M305 156 L326 118 M282 196 L262 190 M332 168 L356 164 M304 260 L330 240" stroke-width="1.7"/>
+<path d="M420 332 L424 176" stroke-width="3.6"/>
+<path d="M423 240 L396 210 M423 220 L452 190 M424 196 L408 168 M424 188 L442 158" stroke-width="1.4"/>
+</g>
+<use xlink:href="#perch" transform="translate(160 160)"/>
+<use xlink:href="#perch" transform="translate(226 141)"/>
+<use xlink:href="#perch" transform="translate(340 160)"/>
+<use xlink:href="#perch" transform="translate(452 190)"/>
+<use xlink:href="#crow" transform="translate(560 120) scale(1.4)"/>
+<use xlink:href="#crow" transform="translate(600 104)"/>
+
+<!-- hunters returning, dogs at heel -->
+<use xlink:href="#hunter" transform="translate(236 300) scale(1.6)" color="#3A332B"/>
+<use xlink:href="#hunter" transform="translate(268 310) scale(1.65)" color="#4A3F33"/>
+<use xlink:href="#hunter" transform="translate(304 318) scale(1.7)" color="#3A332B"/>
+<use xlink:href="#dog" transform="translate(214 312) scale(1.4)"/>
+<use xlink:href="#dog" transform="translate(246 322) scale(1.4)"/>
+<use xlink:href="#dog" transform="translate(284 330) scale(1.5)"/>
+<use xlink:href="#dog" transform="translate(326 332) scale(1.45)"/>
+<use xlink:href="#dog" transform="translate(344 340) scale(1.5)"/>
+<use xlink:href="#dog" transform="translate(360 326) scale(1.3)"/>
+<use xlink:href="#dog" transform="translate(196 324) scale(1.3)"/>
+<use xlink:href="#dog" transform="translate(380 340) scale(1.45)"/>
+
+<!-- right foreground: bush, a man about his business, a piñata -->
+<path d="M880 360 Q1020 276 1200 286 L1200 360 Z" fill="#F5F6F1"/>
+<path d="M880 360 Q1020 276 1200 286" stroke="#CBD1C8" stroke-width="2" fill="none"/>
+<g stroke="#2A241E" fill="none" stroke-linecap="round">
+<path d="M1080 330 L1084 196" stroke-width="3.6"/>
+<path d="M1083 250 L1050 222 M1083 232 L1116 206 M1084 214 L1066 190 M1084 206 L1102 180" stroke-width="1.5"/>
+</g>
+<path d="M1116 206 L1116 226" stroke="#3A2E22" stroke-width="0.8"/>
+<path d="M1116 226 L1120 233 L1128 233 L1122 238 L1124 246 L1116 241 L1108 246 L1110 238 L1104 233 L1112 233 Z" fill="#B5651D" stroke="#7A2A1C" stroke-width="0.8"/>
+<use xlink:href="#perch" transform="translate(1050 222)"/>
+<use xlink:href="#crow" transform="translate(300 60) scale(1.2)"/>
+<use xlink:href="#crow" transform="translate(760 70)"/>
+<use xlink:href="#crow" transform="translate(790 82) scale(0.8)"/>
+<g transform="translate(-34 0)">
+<path d="M1128 318 Q1136 300 1150 306 Q1160 296 1170 310 Q1178 316 1172 324 L1130 324 Z" fill="#3E4A34"/>
+<g transform="translate(1168 322) scale(1.2)">
+<circle cx="-2" cy="-13" r="2.1" fill="#2A241E"/>
+<path d="M-4 -11 L3 -11 L5 -6 L-2 -5 Z" fill="#6B5A45"/>
+<circle cx="5" cy="-4.6" r="2" fill="#E8D8C4"/>
+<path d="M-1 -5 L-4 0 M3 -5 L1 0" stroke="#2A241E" stroke-width="1.1"/>
+</g>
+</g>
+<use xlink:href="#dog" transform="translate(960 326) scale(1.3)"/>
+<use xlink:href="#p" transform="translate(1000 320) scale(1.2)" color="#7A2A1C"/>
+<use xlink:href="#p" transform="translate(1016 322) scale(1.1)" color="#4E5E66"/>
+</svg>

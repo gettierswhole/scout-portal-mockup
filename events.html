@@ -26,7 +26,7 @@ a{color:#7A2A1C}a:hover{color:#5A1C12}
 </nav>
 <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px 40px 48px; display: flex; flex-direction: column; gap: 24px">
 <figure style="margin: 0">
-<img src="panorama.svg" alt="A winter landscape in the manner of Bruegel: hunters and dogs trudge home past a tavern fire, villagers skate and joust on a frozen pond below a snowy Galway village, crows on bare trees, a piñata hangs from a branch and a man squats behind a bush." style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #BFB49A"/>
+<img src="panorama.svg" alt="A winter landscape in the manner of Bruegel: hunters and dogs trudge home past a tavern fire, villagers skate and joust on a frozen pond below a snowy Galway village, crows on bare trees, a piñata hangs from a branch a man squats behind a bush, and Vinny rides by on a small horse smoking an enormous joint." style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #BFB49A"/>
 <figcaption style="margin-top: 6px; font-size: 14px; font-style: italic; color: #5E564A">Galway in midwinter, after Pieter Bruegel the Elder's Hunters in the Snow (1565). Thirty-six days to Christmas.</figcaption>
 </figure>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
@@ -113,7 +113,7 @@ var okBadge = 'flex: 0 0 auto; padding: 3px 9px; border-radius: 999px; font-size
 var shortBadge = 'flex: 0 0 auto; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #F1DEC0; color: #6B3110';
 var events = data.map(function (ev) {
 var me = mine[ev.id] || 'none';
-var rows = [{ name: 'You (Bob)', st: me }].concat(leaders.map(function (n, i) { return { name: n, st: ev.st[i] }; }));
+var rows = [{ name: 'You (Vinny)', st: me }].concat(leaders.map(function (n, i) { return { name: n, st: ev.st[i] }; }));
 rows = rows.map(function (r) { return { name: r.name, label: labels[r.st], pill: pills[r.st] }; });
 var confirmed = [me].concat(ev.st).filter(function (s) { return s === 'yes'; }).length;
 var short = Math.max(0, ev.needed - confirmed);

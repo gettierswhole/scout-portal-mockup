@@ -1,5 +1,13 @@
 # The Great Cornholio! — Galway scout group portal (mockup)
 
-A clickable mockup of a leaders' portal for a scout group: dashboard, events and availability, shared files, and subs and payments. All names, dates and figures are made-up sample data.
+A clickable mockup of a scout group's portal. Everything in it is made-up sample data.
+
+- `index.html`: leaders' dashboard, with live Lough Ree weather from Met Éireann (CC BY 4.0)
+- `events.html`: events and leader availability, with a working "New event" form
+- `files.html`: shared files
+- `members.html`: leaders' vetting and training, youth members' forms
+- `payments.html`: subs and payments
+- `login.html`: sign-in screen
+- `parent.html`: what a parent sees on their phone
 
 Live site: https://gettierswhole.github.io/scout-portal-mockup/

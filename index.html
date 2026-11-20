@@ -23,9 +23,49 @@ a{color:#7A2A1C}a:hover{color:#5A1C12}
 <a href="index.html" aria-current="page" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 8px; background: rgba(255,255,255,0.14); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path></svg>Dashboard</a>
 <a href="events.html" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 8px; color: #EDE6D6; text-decoration: none; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Events &amp; availability</a>
 <a href="files.html" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 8px; color: #EDE6D6; text-decoration: none; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>Files</a>
+<a href="members.html" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 8px; color: #EDE6D6; text-decoration: none; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"></path></svg>Members</a>
 <a href="payments.html" style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 8px; color: #EDE6D6; text-decoration: none; font-size: 16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"></rect><path d="M2 10h20"></path></svg>Subs &amp; payments</a>
 </nav>
 <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px 40px 48px; display: flex; flex-direction: column; gap: 24px">
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<label style="flex: 1 1 260px; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 8px; background: #FBF8F0; border: 1px solid #A99E86; color: #5E564A">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search</span>
+<input type="search" placeholder="Search events, files and members" style="flex: 1 1 auto; min-width: 0; min-height: 40px; border: 0; background: transparent; font: 16px 'EB Garamond', Georgia, serif; color: #231F1A"/>
+</label>
+<div style="position: relative">
+<button type="button" aria-label="{{bar.bellLabel}}" aria-expanded="{{bar.notifExp}}" onClick="{{bar.toggleNotif}}" style="position: relative; width: 44px; height: 44px; border-radius: 8px; border: 1px solid #A99E86; background: #FBF8F0; color: #231F1A; cursor: pointer; display: inline-flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+<sc-if value="{{bar.showBadge}}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 10px; background: #7A2A1C; color: #FFFFFF; font: 600 13px/20px 'EB Garamond', Georgia, serif; text-align: center">4</span></sc-if>
+</button>
+<sc-if value="{{bar.notifOpen}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-label="Notifications" style="position: absolute; right: 0; top: 52px; width: 360px; max-width: 80vw; z-index: 20; background: #FBF8F0; border: 1px solid #A99E86; border-radius: 10px; box-shadow: 0 14px 36px rgba(35,31,26,0.24); padding: 6px">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px">
+<strong style="font-size: 17px">Notifications</strong>
+<button type="button" onClick="{{bar.markRead}}" style="min-height: 36px; border: 0; background: transparent; color: #7A2A1C; font: 600 15px 'EB Garamond', Georgia, serif; cursor: pointer">Mark all read</button>
+</div>
+<sc-for list="{{bar.notes}}" as="n" hint-placeholder-count="4">
+<a href="{{n.href}}" style="{{n.style}}"><span style="display: block; font-size: 16px; color: #231F1A">{{n.text}}</span><span style="display: block; font-size: 14px; color: #5E564A">{{n.when}}</span></a>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<div style="position: relative">
+<button type="button" aria-expanded="{{bar.userExp}}" onClick="{{bar.toggleUser}}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px 0 6px; border-radius: 8px; border: 1px solid #A99E86; background: #FBF8F0; cursor: pointer; font: 16px 'EB Garamond', Georgia, serif; color: #231F1A">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 50%; background: #2B2620; color: #EDE6D6; display: inline-flex; align-items: center; justify-content: center; font: 400 19px 'UnifrakturMaguntia', serif">G</span>
+<span style="text-align: left; line-height: 1.15"><span style="display: block; font-weight: 600">Gorm</span><span style="display: block; font-size: 14px; color: #5E564A">Group leader</span></span>
+</button>
+<sc-if value="{{bar.userOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; right: 0; top: 52px; width: 240px; z-index: 20; background: #FBF8F0; border: 1px solid #A99E86; border-radius: 10px; box-shadow: 0 14px 36px rgba(35,31,26,0.24); padding: 6px; display: flex; flex-direction: column">
+<a href="members.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 6px; color: #231F1A; text-decoration: none; font-size: 16px">My profile</a>
+<a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 6px; color: #231F1A; text-decoration: none; font-size: 16px">Notification settings</a>
+<a href="parent.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 6px; color: #231F1A; text-decoration: none; font-size: 16px">See what parents see</a>
+<div style="height: 1px; background: #E3DCCB; margin: 4px 8px"></div>
+<a href="login.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 6px; color: #7A2A1C; text-decoration: none; font-size: 16px; font-weight: 600">Sign out</a>
+</div>
+</sc-if>
+</div>
+</header>
 <figure style="margin: 0">
 <img src="panorama.svg" alt="A winter landscape in the manner of Bruegel: hunters and dogs trudge home past a tavern fire, villagers skate and joust on a frozen pond below a snowy Galway village, crows on bare trees, a piñata hangs from a branch a man squats behind a bush, and Gorm rides by on a small horse smoking an enormous joint." style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid #BFB49A"/>
 <figcaption style="margin-top: 6px; font-size: 14px; font-style: italic; color: #5E564A">Galway in midwinter, after Pieter Bruegel the Elder's Hunters in the Snow (1565). Thirty-six days to Christmas.</figcaption>
@@ -205,6 +245,29 @@ humidity: Math.round(g(cur, 'humidity', 'value')), pressure: Math.round(g(cur, '
 updated: new Date(created).toLocaleString('en-IE', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Dublin' })
 };
 }
+barVals() {
+var self = this;
+var s = this.state || {};
+var read = !!s.barRead;
+var notes = [
+{ text: "Paul F. can't make the jousting tournament. It's now one leader short.", when: '12 minutes ago', href: 'events.html' },
+{ text: "Saoirse K.'s Term 1 subs are 21 days overdue.", when: 'Today, 09:00', href: 'payments.html' },
+{ text: 'Mary K. uploaded the jousting kit list.', when: 'Tue 17 Nov', href: 'files.html' },
+{ text: 'Galway City Council grant closes in 8 days.', when: 'Thu 19 Nov', href: 'index.html' }
+].map(function (n) {
+return Object.assign({}, n, { style: 'display: block; padding: 10px; border-radius: 6px; text-decoration: none; ' + (read ? 'background: transparent' : 'background: #EFE7D4') });
+});
+return {
+notes: notes,
+showBadge: !read,
+bellLabel: read ? 'Notifications' : 'Notifications, 4 unread',
+notifOpen: s.barMenu === 'n', userOpen: s.barMenu === 'u',
+notifExp: s.barMenu === 'n' ? 'true' : 'false', userExp: s.barMenu === 'u' ? 'true' : 'false',
+toggleNotif: function () { self.setState({ barMenu: s.barMenu === 'n' ? null : 'n' }); },
+toggleUser: function () { self.setState({ barMenu: s.barMenu === 'u' ? null : 'u' }); },
+markRead: function () { self.setState({ barRead: true }); }
+};
+}
 renderVals() {
 var s = this.state || {};
 var w = s.w || {};
@@ -212,6 +275,8 @@ var warnings = (s.warnings || []).map(function (x) {
 return { level: (x.level || x.type || 'Warning') + ':', text: x.headline || x.description || x.regions || '' };
 });
 return {
+bar: this.barVals(),
+
 wx: {
 status: (s.live ? 'Live · updated ' : 'Snapshot · ') + w.updated,
 tiles: [

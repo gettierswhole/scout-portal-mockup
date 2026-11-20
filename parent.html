@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scout portal — Parent view on a phone</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IM+Fell+English:ital@0;1&amp;family=UnifrakturMaguntia&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2CF}
+a{color:#7A2A1C}a:hover{color:#5A1C12}
+</style>
+<script src="dc-runtime.js" defer></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<script type="text/x-dc-template" id="dc-template"><root>
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; font-family: 'EB Garamond', Georgia, serif; color: #231F1A; background: #E9E2CF; overflow: hidden">
+<header style="flex: 0 0 auto; background: #2B2620; color: #EDE6D6; padding: 18px 18px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div>
+<div style="font-family: 'UnifrakturMaguntia', serif; font-size: 22px; line-height: 1">The Great Cornholio!</div>
+<div style="font-size: 14px; color: #CFC4AE; margin-top: 4px">Hi Karen · Saoirse is in Cubs</div>
+</div>
+<button type="button" aria-label="Account" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #5E564A; background: #433B30; color: #EDE6D6; font: 600 17px 'EB Garamond', serif; cursor: pointer">K</button>
+</header>
+<main style="flex: 1 1 auto; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+
+<sc-if value="{{unpaid}}" hint-placeholder-val="{{ true }}">
+<section aria-label="Subs" style="padding: 16px; border-radius: 12px; background: #F1DEC0; border: 1px solid #A8581A">
+<div style="font-weight: 600; font-size: 17px; color: #6B3110">Term 1 subs are overdue</div>
+<div style="font-size: 15px; color: #6B3110; margin-top: 2px">€[AMOUNT] · was due Fri 30 Oct</div>
+<button type="button" onClick="{{pay}}" style="margin-top: 12px; width: 100%; min-height: 48px; border-radius: 8px; border: 0; background: #7A2A1C; color: #FFFFFF; font: 600 17px 'EB Garamond', Georgia, serif; cursor: pointer">Pay now</button>
+<div style="font-size: 14px; color: #6B3110; margin-top: 8px">Card or direct debit through [payment provider]. Your card details never reach the group.</div>
+</section>
+</sc-if>
+<sc-if value="{{paid}}" hint-placeholder-val="{{ false }}">
+<section role="status" aria-label="Subs" style="padding: 16px; border-radius: 12px; background: #DFE4D0; border: 1px solid #3B5230">
+<div style="font-weight: 600; font-size: 17px; color: #3B5230">Subs paid. Thank you.</div>
+<div style="font-size: 15px; color: #3B5230; margin-top: 2px">A receipt is on its way to your email.</div>
+</section>
+</sc-if>
+
+<section aria-label="Consent" style="padding: 16px; border-radius: 12px; background: #FBF8F0; border: 1px solid #D6CDB6">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5E564A">Needs your signature</div>
+<div style="font-weight: 600; font-size: 17px; margin-top: 6px">Consent form: jousting tournament</div>
+<div style="font-size: 15px; color: #5E564A">Due Wed 2 Dec · pool noodles and helmets only</div>
+<sc-if value="{{unsigned}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{sign}}" style="margin-top: 12px; width: 100%; min-height: 48px; border-radius: 8px; border: 1px solid #7A2A1C; background: #FBF8F0; color: #7A2A1C; font: 600 17px 'EB Garamond', Georgia, serif; cursor: pointer">Read and sign</button>
+</sc-if>
+<sc-if value="{{signed}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="margin-top: 10px; font-size: 16px; color: #3B5230; font-weight: 600">Signed by Karen K. today</div>
+</sc-if>
+</section>
+
+<section aria-labelledby="pe-h" style="padding: 16px; border-radius: 12px; background: #FBF8F0; border: 1px solid #D6CDB6">
+<h2 id="pe-h" style="margin: 0; font-family: 'IM Fell English', Georgia, serif; font-size: 21px">Coming up for Saoirse</h2>
+<div style="display: flex; flex-direction: column; margin-top: 6px">
+<sc-for list="{{events}}" as="ev" hint-placeholder-count="3">
+<div style="padding: 12px 0; border-bottom: 1px solid #E3DCCB">
+<div style="font-weight: 600; font-size: 17px">{{ev.title}}</div>
+<div style="font-size: 15px; color: #5E564A">{{ev.when}}</div>
+<div style="display: flex; gap: 8px; margin-top: 8px; align-items: center">
+<span style="font-size: 15px; color: #433B30; flex: 1 1 auto">Going?</span>
+<button type="button" onClick="{{ev.yes}}" aria-pressed="{{ev.yesPressed}}" style="{{ev.yesStyle}}">Yes</button>
+<button type="button" onClick="{{ev.no}}" aria-pressed="{{ev.noPressed}}" style="{{ev.noStyle}}">No</button>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Shared files" style="padding: 16px; border-radius: 12px; background: #FBF8F0; border: 1px solid #D6CDB6">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5E564A">From the leaders</div>
+<a href="#" style="display: block; margin-top: 8px; font-size: 17px; font-weight: 600">Jousting kit list (noodles &amp; helmets)</a>
+<a href="#" style="display: block; margin-top: 6px; font-size: 17px; font-weight: 600">Taco night: what to bring</a>
+</section>
+</main>
+<nav aria-label="Parent menu" style="flex: 0 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FBF8F0; border-top: 1px solid #D6CDB6; padding: 6px 4px 10px">
+<a href="parent.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 48px; justify-content: center; text-decoration: none; color: #7A2A1C; font-size: 14px; font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path></svg>Home</a>
+<a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 48px; justify-content: center; text-decoration: none; color: #5E564A; font-size: 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Events</a>
+<a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 48px; justify-content: center; text-decoration: none; color: #5E564A; font-size: 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"></rect><path d="M2 10h20"></path></svg>Payments</a>
+<a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 48px; justify-content: center; text-decoration: none; color: #5E564A; font-size: 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path></svg>Leaders</a>
+</nav>
+</div>
+</root></script>
+<script type="text/x-dc-logic" id="dc-logic">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { paid: false, signed: false, rsvp: { joust: 'yes' } };
+}
+renderVals() {
+var self = this;
+var s = this.state || {};
+var rsvp = s.rsvp || {};
+function btn(on) {
+return 'min-width: 64px; min-height: 40px; padding: 0 14px; border-radius: 999px; font: 600 16px EB Garamond, Georgia, serif; cursor: pointer; ' + (on ? 'background: #7A2A1C; color: #FFFFFF; border: 1px solid #7A2A1C' : 'background: #FBF8F0; color: #231F1A; border: 1px solid #A99E86');
+}
+function set(id, v) { var r = Object.assign({}, rsvp); r[id] = v; self.setState({ rsvp: r }); }
+var events = [
+{ id: 'joust', title: 'Cornholio jousting tournament', when: 'Sun 6 Dec · 11:00 · South Park' },
+{ id: 'tacos', title: 'Taco night fundraiser', when: 'Sat 12 Dec · 17:00 · Scout Den' },
+{ id: 'posadas', title: 'Las Posadas Christmas party', when: 'Fri 18 Dec · 18:30 · Scout Den' }
+].map(function (ev) {
+var v = rsvp[ev.id];
+return Object.assign({}, ev, {
+yesStyle: btn(v === 'yes'), noStyle: btn(v === 'no'),
+yesPressed: v === 'yes' ? 'true' : 'false', noPressed: v === 'no' ? 'true' : 'false',
+yes: function () { set(ev.id, 'yes'); }, no: function () { set(ev.id, 'no'); }
+});
+});
+return {
+events: events,
+paid: !!s.paid, unpaid: !s.paid, signed: !!s.signed, unsigned: !s.signed,
+pay: function () { self.setState({ paid: true }); },
+sign: function () { self.setState({ signed: true }); }
+};
+}
+}
+</script>
+</body>
+</html>

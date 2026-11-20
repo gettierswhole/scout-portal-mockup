@@ -28,7 +28,7 @@
     Array.prototype.forEach.call(node.attributes, function (a) {
       var name = a.name, val = a.value, m = WHOLE.exec(val);
       if (name.indexOf('hint-') === 0) return;
-      if (/^on[A-Z]/.test(name)) { var fn = m && lookup(scope, m[1]); if (typeof fn === 'function') el.addEventListener(name.slice(2).toLowerCase(), fn); return; }
+      if (/^on[A-Z]/.test(name)) { var fn = m && lookup(scope, m[1]); var evName = name === 'onChange' && (tag === 'input' || tag === 'textarea') ? 'input' : name.slice(2).toLowerCase(); if (typeof fn === 'function') el.addEventListener(evName, fn); return; }
       if (m) { var v = lookup(scope, m[1]); if (v === false || v == null) return; el.setAttribute(name, v === true ? '' : String(v)); return; }
       el.setAttribute(name, interp(val, scope));
     });

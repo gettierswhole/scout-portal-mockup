@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scout portal — Sign in</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IM+Fell+English:ital@0;1&amp;family=UnifrakturMaguntia&amp;display=swap">
+<style>
+body{margin:0;background:#E9E2CF}
+a{color:#7A2A1C}a:hover{color:#5A1C12}
+</style>
+<script src="dc-runtime.js" defer></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<script type="text/x-dc-template" id="dc-template"><root>
+
+<div style="min-height: 100vh; box-sizing: border-box; font-family: 'EB Garamond', Georgia, serif; color: #231F1A; background: #E9E2CF; display: flex; flex-direction: column; align-items: center; padding: 0 0 48px">
+<img src="panorama.svg" alt="" style="display: block; width: 100%; height: 300px; object-fit: cover; object-position: center 70%"/>
+<main style="width: 100%; max-width: 440px; box-sizing: border-box; margin: -96px 16px 0; padding: 32px 32px 28px; background: #FBF8F0; border: 1px solid #BFB49A; border-radius: 14px; box-shadow: 0 18px 40px rgba(35,31,26,0.18); display: flex; flex-direction: column; gap: 18px">
+<div style="text-align: center">
+<div aria-hidden="true" style="width: 64px; height: 64px; margin: 0 auto 10px; border-radius: 50%; background: #2B2620; color: #EDE6D6; display: flex; align-items: center; justify-content: center; font: 400 34px 'UnifrakturMaguntia', serif">C</div>
+<h1 style="margin: 0; font-family: 'UnifrakturMaguntia', serif; font-weight: 400; font-size: 34px">The Great Cornholio!</h1>
+<div style="font-size: 16px; color: #5E564A; margin-top: 4px">Galway Scouts · portal for leaders and parents</div>
+</div>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label for="email" style="font-size: 16px; font-weight: 600">Email address</label>
+<input id="email" type="email" autocomplete="email" placeholder="you@example.ie" onChange="{{setEmail}}" style="min-height: 48px; box-sizing: border-box; padding: 0 14px; border-radius: 8px; border: 1px solid #A99E86; background: #FFFFFF; font: 17px 'EB Garamond', Georgia, serif; color: #231F1A"/>
+<button type="button" onClick="{{send}}" style="min-height: 48px; border-radius: 8px; border: 0; background: #7A2A1C; color: #FFFFFF; font: 600 17px 'EB Garamond', Georgia, serif; cursor: pointer">Email me a sign-in link</button>
+<div style="font-size: 15px; color: #5E564A; line-height: 1.45">No passwords to remember. We'll email you a link that signs you in on this device. Leaders and parents use the same door; you'll only see what your role allows.</div>
+</div>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-direction: column; gap: 12px; text-align: center">
+<div style="font-family: 'IM Fell English', Georgia, serif; font-size: 24px">Check your inbox</div>
+<div style="font-size: 16px; color: #433B30; line-height: 1.45">We've sent a sign-in link to <strong>{{shownEmail}}</strong>. It works for 15 minutes. Nothing there? Check spam, or try again.</div>
+<a href="index.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 8px; background: #7A2A1C; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px">Open the portal (demo)</a>
+<button type="button" onClick="{{reset}}" style="min-height: 44px; border: 0; background: transparent; color: #7A2A1C; font: 600 16px 'EB Garamond', Georgia, serif; cursor: pointer">Use a different email</button>
+</div>
+</sc-if>
+<div style="border-top: 1px solid #E3DCCB; padding-top: 14px; font-size: 14px; color: #5E564A; line-height: 1.45">We will never ask for your sign-in link by WhatsApp, text or phone. Your details are stored in line with GDPR. <a href="#">Privacy notice</a> · <a href="#">Child safeguarding statement</a></div>
+</main>
+</div>
+</root></script>
+<script type="text/x-dc-logic" id="dc-logic">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { email: '', sent: false };
+}
+renderVals() {
+var self = this;
+var s = this.state || {};
+return {
+sent: !!s.sent, notSent: !s.sent,
+shownEmail: s.email || 'gorm@example.ie',
+setEmail: function (e) { self.state = Object.assign({}, self.state, { email: e && e.target ? e.target.value : '' }); },
+send: function () { self.setState({ sent: true }); },
+reset: function () { self.setState({ sent: false, email: '' }); }
+};
+}
+}
+</script>
+</body>
+</html>
